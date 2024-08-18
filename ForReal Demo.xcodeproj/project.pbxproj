@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		259A44FF2C71AC1C00FD371B /* ForReal_DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259A44FE2C71AC1C00FD371B /* ForReal_DemoApp.swift */; };
 		259A45012C71AC1C00FD371B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259A45002C71AC1C00FD371B /* ContentView.swift */; };
-		259A45032C71AC1C00FD371B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259A45022C71AC1C00FD371B /* Item.swift */; };
 		259A45052C71AC1D00FD371B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259A45042C71AC1D00FD371B /* Assets.xcassets */; };
 		259A45082C71AC1D00FD371B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 259A45072C71AC1D00FD371B /* Preview Assets.xcassets */; };
 		259A450F2C71ACDE00FD371B /* RoomScanViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 259A450E2C71ACDE00FD371B /* RoomScanViews.swift */; };
@@ -22,7 +21,6 @@
 		259A44FB2C71AC1C00FD371B /* ForReal Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ForReal Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		259A44FE2C71AC1C00FD371B /* ForReal_DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForReal_DemoApp.swift; sourceTree = "<group>"; };
 		259A45002C71AC1C00FD371B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		259A45022C71AC1C00FD371B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		259A45042C71AC1D00FD371B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		259A45072C71AC1D00FD371B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		259A450E2C71ACDE00FD371B /* RoomScanViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomScanViews.swift; sourceTree = "<group>"; };
@@ -69,7 +67,6 @@
 				259A45102C71ACF400FD371B /* RoomCaptureController.swift */,
 				259A45122C71AD0400FD371B /* FileDetailView.swift */,
 				259A45142C71AD1300FD371B /* FileManager.swift */,
-				259A45022C71AC1C00FD371B /* Item.swift */,
 				259A45042C71AC1D00FD371B /* Assets.xcassets */,
 				259A45062C71AC1D00FD371B /* Preview Content */,
 			);
@@ -156,7 +153,6 @@
 			files = (
 				259A45012C71AC1C00FD371B /* ContentView.swift in Sources */,
 				259A45132C71AD0400FD371B /* FileDetailView.swift in Sources */,
-				259A45032C71AC1C00FD371B /* Item.swift in Sources */,
 				259A45152C71AD1300FD371B /* FileManager.swift in Sources */,
 				259A450F2C71ACDE00FD371B /* RoomScanViews.swift in Sources */,
 				259A44FF2C71AC1C00FD371B /* ForReal_DemoApp.swift in Sources */,

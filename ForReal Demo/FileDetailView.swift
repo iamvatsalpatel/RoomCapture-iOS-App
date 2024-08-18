@@ -85,11 +85,3 @@ extension View {
         }
     }
 }
-
-// Assuming this is defined elsewhere in your project
-// class RoominatorFileManager {
-//     static let shared = RoominatorFileManager()
-//     func getUSDZFileURL(for fileName: String) -> URL? {
-//         // Implementation
-//     }
-// }

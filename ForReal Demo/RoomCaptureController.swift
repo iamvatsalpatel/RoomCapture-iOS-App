@@ -76,7 +76,6 @@ class RoomCaptureController: RoomCaptureViewDelegate, RoomCaptureSessionDelegate
             print("Error exporting and saving usdz scan: \(error)")
         }
         
-        // Clean up temporary file
         try? FileManager.default.removeItem(at: tempURL)
     }
 }
