@@ -11,17 +11,17 @@ class RoominatorFileManager {
     static let shared = RoominatorFileManager()
     
     private init() {
-        createRoominatorFolder()
+        createForRealScansFolder()
     }
     
-    private let folderName = "RoominatorScans"
+    private let folderName = "ForRealScans"
     
-    private var roominatorFolderURL: URL? {
+    private var ForRealScansFolderURL: URL? {
         FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent(folderName)
     }
     
-    private func createRoominatorFolder() {
-        guard let folderURL = roominatorFolderURL else {
+    private func createForRealScansFolder() {
+        guard var folderURL = ForRealScansFolderURL else {
             print("Unable to access documents directory")
             return
         }
@@ -29,18 +29,21 @@ class RoominatorFileManager {
         if !FileManager.default.fileExists(atPath: folderURL.path) {
             do {
                 try FileManager.default.createDirectory(at: folderURL, withIntermediateDirectories: true, attributes: nil)
-                print("Roominator folder created successfully")
+                var resourceValues = URLResourceValues()
+                resourceValues.isExcludedFromBackup = true
+                try folderURL.setResourceValues(resourceValues)
+                print("ForRealScans folder created successfully")
             } catch {
-                print("Error creating Roominator folder: \(error)")
+                print("Error creating ForRealScans folder: \(error)")
             }
         } else {
-            print("Roominator folder already exists")
+            print("ForRealScans folder already exists")
         }
     }
     
     func saveUSDZFile(_ data: Data, withName fileName: String) -> Bool {
-        guard let folderURL = roominatorFolderURL else {
-            print("Unable to access Roominator folder")
+        guard let folderURL = ForRealScansFolderURL else {
+            print("Unable to access ForRealScans folder")
             return false
         }
         
@@ -58,14 +61,14 @@ class RoominatorFileManager {
     }
     
     func getUSDZFileURL(for fileName: String) -> URL? {
-        guard let folderURL = roominatorFolderURL else { return nil }
+        guard let folderURL = ForRealScansFolderURL else { return nil }
         let fileNameWithExtension = fileName.hasSuffix(".usdz") ? fileName : "\(fileName).usdz"
         return folderURL.appendingPathComponent(fileNameWithExtension)
     }
     
     func listFiles() -> [String] {
-        guard let folderURL = roominatorFolderURL else {
-            print("Unable to access Roominator folder")
+        guard let folderURL = ForRealScansFolderURL else {
+            print("Unable to access ForRealScans folder")
             return []
         }
         

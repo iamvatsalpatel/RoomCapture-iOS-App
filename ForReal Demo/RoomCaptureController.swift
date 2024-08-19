@@ -13,11 +13,11 @@ import Observation
 @Observable
 class RoomCaptureController: RoomCaptureViewDelegate, RoomCaptureSessionDelegate, ObservableObject {
     required init?(coder: NSCoder) {
-      fatalError("Not needed.")
+        fatalError("Not needed.")
     }
     
     func encode(with coder: NSCoder) {
-      fatalError("Not needed.")
+       fatalError("Not needed.")
     }
     
     var roomCaptureView: RoomCaptureView
@@ -63,14 +63,18 @@ class RoomCaptureController: RoomCaptureViewDelegate, RoomCaptureSessionDelegate
         let fileNameWithExtension = fileName.hasSuffix(".usdz") ? fileName : "\(fileName).usdz"
         let tempURL = FileManager.default.temporaryDirectory.appendingPathComponent(fileNameWithExtension)
         
+        let categorizedObjects = categorizeRoomObjects(finalResult.objects)
+        
         do {
-            try finalResult.export(to: tempURL)
+            try finalResult.export(to: tempURL) // exportOptions: [.parametric, .mesh]
             if let data = try? Data(contentsOf: tempURL) {
                 if RoominatorFileManager.shared.saveUSDZFile(data, withName: fileNameWithExtension) {
-                    print("Scan saved successfully as \(fileNameWithExtension)")
+                    printCategorizedObjects(categorizedObjects)
                 } else {
-                    print("Failed to save scan file.")
+                    print("Failed to save processed scan file.")
                 }
+            } else {
+                print("Failed to process USDZ file.")
             }
         } catch {
             print("Error exporting and saving usdz scan: \(error)")
@@ -78,4 +82,52 @@ class RoomCaptureController: RoomCaptureViewDelegate, RoomCaptureSessionDelegate
         
         try? FileManager.default.removeItem(at: tempURL)
     }
+    
+    
+    private func categorizeRoomObjects(_ objects: [CapturedRoom.Object]) -> [String: [CapturedRoom.Object]] {
+        var categorized = [String: [CapturedRoom.Object]]()
+        
+        for object in objects {
+            let category: String
+            switch object.category {
+            case .refrigerator, .oven, .dishwasher, .washerDryer:
+                category = "Appliance"
+            case .table:
+                category = "Table"
+            case .bed:
+                category = "Bed"
+            case .chair, .sofa:
+                category = "Seating"
+            case .storage:
+                category = "Storage"
+            case .bathtub, .toilet:
+                category = "Bathroom Fixture"
+            case .sink:
+                category = "Sink"
+            case .television:
+                category = "Television"
+            default:
+                category = "Other"
+            }
+            
+            if categorized[category] == nil {
+                categorized[category] = []
+            }
+            categorized[category]?.append(object)
+        }
+        
+        return categorized
+    }
+    
+    private func printCategorizedObjects(_ categorizedObjects: [String: [CapturedRoom.Object]]) {
+        print("Categorized objects:")
+        for (category, objects) in categorizedObjects {
+            print("  \(category): \(objects.count) items")
+            for object in objects {
+                print("    - \(object.category): \(object.dimensions)")
+            }
+        }
+    }
 }
+
+
