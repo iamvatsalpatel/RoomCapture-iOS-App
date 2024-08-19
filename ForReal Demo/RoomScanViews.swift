@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 import RoomPlan
 
-struct CaptureView: UIViewRepresentable {
+struct CameraCaptureView: UIViewRepresentable {
     @Environment(RoomCaptureController.self) private var captureController
 
     func makeUIView(context: Context) -> some UIView {
@@ -19,14 +19,14 @@ struct CaptureView: UIViewRepresentable {
     func updateUIView(_ uiView: UIViewType, context: Context) {}
 }
 
-struct ScanningView: View {
+struct RoomScanningView: View {
     @Environment(RoomCaptureController.self) private var captureController
     @Environment(\.dismiss) var dismiss
     @State private var showNameInputSheet = false
     
     var body: some View {
         ZStack(alignment: .bottom) {
-            CaptureView()
+            CameraCaptureView()
                 .navigationBarBackButtonHidden(true)
                 .navigationBarItems(leading: Button("Cancel") {
                     captureController.stopSession()
@@ -34,10 +34,10 @@ struct ScanningView: View {
                 })
                 .navigationBarItems(trailing: Button("Done") {
                     captureController.stopSession()
-                }.opacity(captureController.scanComplete ? 0 : 1))
+                }.opacity(captureController.isScanComplete ? 0 : 1))
                 .onAppear() {
                     captureController.showSaveButton = false
-                    captureController.scanComplete = false
+                    captureController.isScanComplete = false
                     captureController.startSession()
                 }
             
@@ -91,11 +91,11 @@ struct ScanNewRoomView: View {
                     .resizable()
                     .frame(width: 140, height: 140)
                 Text("Ready for a Scan?").font(.title)
-                Spacer().frame(height: 40)
+                Spacer().frame(height: 50)
                 Text("Make sure to scan the room by pointing the camera at all surfaces.")
                     .multilineTextAlignment(.center)
-                Spacer().frame(height: 40)
-                NavigationLink(destination: ScanningView()) {
+                Spacer().frame(height: 50)
+                NavigationLink(destination: RoomScanningView()) {
                     Text("Start Scan")
                 }
                 .buttonStyle(.borderedProminent)
@@ -104,7 +104,7 @@ struct ScanNewRoomView: View {
                 .cornerRadius(24)
                 .font(.title3)
             }
-            .padding(.bottom, 120)
+            .padding(.bottom, 100)
         }
     }
 }

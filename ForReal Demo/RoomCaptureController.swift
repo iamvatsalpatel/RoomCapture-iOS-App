@@ -22,7 +22,7 @@ class RoomCaptureController: RoomCaptureViewDelegate, RoomCaptureSessionDelegate
     
     var roomCaptureView: RoomCaptureView
     var showSaveButton = false
-    var scanComplete = false
+    var isScanComplete = false
     var showNameInputSheet = false
     var fileName = ""
     
@@ -51,7 +51,7 @@ class RoomCaptureController: RoomCaptureViewDelegate, RoomCaptureSessionDelegate
     func captureView(didPresent processedResult: CapturedRoom, error: Error?) {
         finalResult = processedResult
         showSaveButton = true
-        scanComplete = true
+        isScanComplete = true
     }
     
     func saveScan() {
