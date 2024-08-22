@@ -90,7 +90,7 @@ struct ScanNewRoomView: View {
                 Image("roomIcon2")
                     .resizable()
                     .frame(width: 140, height: 140)
-                Text("Ready for a Scan?").font(.title)
+                Text("Get ready to scan your room").font(.title)
                 Spacer().frame(height: 50)
                 Text("Make sure to scan the room by pointing the camera at all surfaces.")
                     .multilineTextAlignment(.center)

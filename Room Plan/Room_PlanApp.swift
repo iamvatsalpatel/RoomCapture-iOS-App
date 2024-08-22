@@ -10,7 +10,7 @@ import SwiftData
 import RoomPlan
 
 @main
-struct ForReal_DemoApp: App {
+struct Room_PlanApp: App {
     @StateObject private var roomCaptureController = RoomCaptureController()
     
     init() {
