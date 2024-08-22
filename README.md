@@ -23,4 +23,4 @@ You can clone this repository using the command: ``https://github.com/iamvatsalp
 2. The USDZ files generated can be used in 3D applications like Blender for further editing and usage.
 
 ## Facing any issues???
-Feel free to [open an issue](https://github.com/iamvatsalpatel/RoomPlan-iOS-App/issues/new?assignees=&labels=Query&title=Query). I'll be glad to help you. 😁
+Feel free to [open an issue](https://github.com/iamvatsalpatel/RoomPlan-iOS-App/issues/new?assignees=&labels=Query&title=Query). I'll be happy to help.
